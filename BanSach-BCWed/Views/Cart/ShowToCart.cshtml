@@ -1,0 +1,60 @@
+﻿@model BanSach_BCWed.Models.Cart
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowToCart</h2>
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+
+                <th>  Ten   </th>
+                
+                <th>  Hình Ảnh</th>
+
+                <th>  Số Lượng </th>
+
+                <th>  Gía </th>
+
+                 <th>  Thành Tiền </th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                double thanhtien = Convert.ToDouble(item.product.Price * item.Quatity);
+            <tr>
+
+                @*@Html.DisplayFor(model => item.product.Name)*@
+                <th>@item.product.Name</th>
+
+                <th> <a href="preview.html"><img src="~/Content/images/@item.product.Avartar"style="width:100px"height="100px;" /></a></th>
+
+                <th>
+                    @using (Html.BeginForm("Update", "Cart"))
+                    { 
+                    <input type="hidden" value="@item.product.Id" name="IDPro" />
+                    <input type="number" value="@item.Quatity" name="Qualty" />
+                    <input type="submit" value="UpDate" /> }
+                </th>
+
+                <th>@item.product.Price</th>
+                
+                <th>@thanhtien</th>
+                <td>
+
+                    <a href="/Cart/Remove/@item.product.Id ">Xóa</a>
+                </td>
+            </tr>
+                    }
+
+        </tbody>
+        <tr> <td colspan="5" >Tổng Tiền : @Model.TongTien()</td> </tr>
+
+    </table>
+}

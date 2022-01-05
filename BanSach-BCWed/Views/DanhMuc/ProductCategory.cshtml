@@ -1,0 +1,46 @@
+﻿@model List<BanSach_BCWed.Models.Product>
+@{
+    ViewBag.Title = "ProductCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProductCategory</h2>
+<div class="main">
+    <div class="content">
+        <div class="content_top">
+            <div class="heading">
+
+            </div>
+            <div class="see">
+                <p><a href="#">See all Products</a></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            @foreach (var item in Model)
+            {
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="preview.html"><img src="~/Content/images/@item.Avartar" alt="" /></a>
+                    @*<p>@item.ShortDes</p>*@
+                    <h2>
+                        @Html.ActionLink(item.Name, "Index", "SanPham", new { Id = item.Id }, null)
+                    </h2>
+
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p><span class="rupees">@item.Price</span></p>
+                        </div>
+                        <div class="add-cart">
+                            <h4><a href="preview.html">Add to Cart</a></h4>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+
+    </div>
+</div>

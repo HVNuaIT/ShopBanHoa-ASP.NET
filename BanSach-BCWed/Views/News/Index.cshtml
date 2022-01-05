@@ -1,0 +1,23 @@
+﻿@model List<BanSach_BCWed.Models.News>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="main">
+    <div class="content">
+        @foreach (var item in Model)
+        {
+            <div class="image group">
+                <div class="grid images_3_of_1">
+                    <img src="~/Content/images/@item.Avartar" alt="" />
+                </div>
+                <div class="grid news_desc">
+                   <p>@item.ShortDes</p>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>
+
